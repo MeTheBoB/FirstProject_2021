@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<p></p>
+<div class="main_profile">
+  <div class="container">
+    <div class="jumbotron">
+      <div class="profile_content">
+        <h1>User profile page</h1>
+        <img class="rounded-circle account-img" width="68 "height="68"src="{{ user.profile.image.url }}" alt="">
+        <p><strong>{{user.username}}</strong></p>
+        <p class="text-info">{{user.email}}</p>
+        <p>{{user.profile.biography}}</p>
+        <button class="btn btn-success"><a href="{% url 'users:profile_update' %}">Update</a></button>
+      </div>
+      <div class="container">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

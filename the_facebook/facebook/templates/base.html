@@ -1,0 +1,80 @@
+{% load staticfiles  %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The facebook</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post/post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/users.css' %}">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#3b5998 ;">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+
+
+    {% if user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'post:post_list' %}"><img src="{% static 'images/facebook_lg.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'users:profile' %}"><img src="{{user.profile.image.url}}" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account:logout' %}">Log out</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account:login' %}"><img src="{% static 'images/facebook_lg.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account:register' %}" >register</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account:login' %}">Log in</a>
+        </li>
+
+        {%endif%}
+
+      </ul>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+    <div class="container">
+    {% block body_block %}
+
+
+
+    {% endblock %}
+    </div>
+
+
+  </body>
+</html>

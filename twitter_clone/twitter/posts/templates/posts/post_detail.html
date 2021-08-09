@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<p></p>
+<div class="container">
+
+
+    <div class="card mb-3">
+      <img class="rounded-circle account-img" width="68 "height="68"src="{{  object.author.profile.image.url }}" alt="Card image cap">
+        <div align=''>
+          <p class="card-title"><a href="{% url 'posts:user_post' object.author.username %}">{{object.author}}</a></p>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{object.title}}</h3>
+          <p2 class="card-text">{{object.content}}</p2>
+          <p class="card-text"><small class="text-muted">{{object.date_posted}}</small></p>
+        </div>
+    </div>
+    {% if object.author == user %}
+      <div class="">
+        <a class="btn btn-success" href="{% url 'posts:post_update' pk=object.pk%}">Update</a>
+        <a class="btn btn-danger" href="{% url 'posts:post_delete' pk=object.pk %}">Delete</a>
+      </div>
+    {% endif %}
+
+
+
+</div>
+
+{% endblock %}

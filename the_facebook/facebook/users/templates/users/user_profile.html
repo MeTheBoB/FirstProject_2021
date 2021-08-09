@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<p></p>
+
+<div class="main_profile">
+  <div class="container">
+    <div class="profile_content">
+      <img class="cover" src="{{ user.profile.cover_image.url }}" alt="no">
+      <p></p>
+      <img class="rounded-circle account-img" width="68 "height="68"src="{{ user.profile.image.url }}" alt="no">
+      <p><strong>{{user.username}}</strong></p>
+      <p class="text-info">{{user.email}}</p>
+      <p>{{user.profile.biography}}</p>
+      <a href="{% url 'users:update_profile' %}">update profile</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}

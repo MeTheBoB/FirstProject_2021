@@ -1,0 +1,70 @@
+{% load staticfiles  %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+  </head>
+  <body>
+    <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+      <div class="container">
+
+        <ul class="navbar-nav">
+
+          <li class='nav-item active'>
+            <a class='navbar-brand' href="{% url 'home_index' %}">Tweet</a>
+          </li>
+          {% if user.is_authenticated %}
+
+          <li class='nav-item active'>
+            <a class='nav-link' href="{% url 'users:profile' %}"> <span class="glyphicon glyphicon-user"></span> Profile</a>
+          </li>
+
+           <li class='nav-item active'>
+             <a class='nav-link' href="{% url 'posts:post_create' %}">Post</a>
+           </li>
+
+            <li class='nav-item active'>
+              <a class='nav-link' href="{% url 'account:logout' %}">Log out</a>
+            </li>
+
+
+          {% else %}
+
+          <li class="nav-item active">
+            <a class='nav-link' href="{% url 'account:register' %}">Register</a>
+          </li>
+          <li class="nav-item active">
+            <a class='nav-link' href="{% url 'account:login' %}"> <span class="glyphicon glyphicon-user"></span> Log In</a>
+          </li>
+
+          {% endif %}
+
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="container">
+    {% block body_block %}
+
+
+    {% endblock %}
+    </div>
+
+
+
+  </body>
+</html>

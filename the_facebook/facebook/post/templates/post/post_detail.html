@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<p></p>
+<div class="postdetail">
+<div class="container">
+    <div class="card mb-3">
+      <a href="{% url 'post:user_post_list' post.author %}"><img class="rounded-circle account-img" width="50 "height="50"src="{{  post.author.profile.image.url }}" alt="No image"></a>
+        <div align=''>
+          <p class="author_title"class="card-title"> <a href="{% url 'post:user_post_list' post.author %}">{{post.author}}</a></p>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{object.title}}</h3>
+          <p2 class="card-text">{{object.message}}</p2>
+          <p></p>
+          {% if post.image_post %}
+            <img src="{{object.image_post.url}}" alt="No image">
+          {% else %}
+            <p></p>
+          {% endif %}
+          <p class="card-text"><small class="text-muted">{{object.date_posted}}</small></p>
+          <a href="{url 'post:comment_create' pk=object.pk}">Leave a comment</a>
+
+          {% if object.author == user %}
+          <div class="">
+            <a class="btn btn-success" href="{% url 'post:post_update' pk=object.pk%}">Update</a>
+            <a class="btn btn-danger" href="{% url 'post:post_delete' pk=object.pk %}">Delete</a>
+          </div>
+          {%endif%}
+        </div>
+        <p>{{comment.title}}</p>
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}

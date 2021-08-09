@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+{% load bootstrap4 %}
+
+<p></p>
+<div class="container">
+  <div class="jumbotron">
+    <h3>Create Post</h3>
+
+      <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <table>{% bootstrap_form form %}</table>
+
+        <input class="btn btn-success" type="submit" name="" value="Submit">
+      </form>
+  </div>
+</div>
+
+
+{% endblock %}

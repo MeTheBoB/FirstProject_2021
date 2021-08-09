@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+
+{% block body_block %}
+
+{% load bootstrap4 %}
+<p></p>
+<div class="container">
+
+  <form class="register_form" method="POST">
+    <h3>Create a new account</h3>
+    <p>It's quick and easy.</p>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <input class="btn btn-success" type="submit" name="" value="Sign Up">
+    <p></p>
+    <a href="{% url 'account:login' %}">Already have an account than Log In.</a>
+  </form>
+  <p></p>
+</div>
+
+
+
+
+{% endblock %}

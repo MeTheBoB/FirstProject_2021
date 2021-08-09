@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block body_block %}
+
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+<div class="login_form">
+  <div class="container">
+    <h1 id="login">Log In</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+
+      <input type="submit" class='btn btn-default' value="Log In">
+    </form>
+
+    <a href="{% url 'account:register' %}">Don't have an account than register</a><br>
+    <a href="{% url 'password_reset' %}">Forgot Password?</a><br>
+
+  </div>
+</div>
+
+{% endblock %}

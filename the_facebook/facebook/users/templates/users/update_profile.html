@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+
+{% block body_block %}
+
+{% load bootstrap4 %}
+<p></p>
+<div class="container">
+  <div class="loginform">
+  <form class="login_form" method="POST" enctype="multipart/form-data">
+    <h3>Update Profile</h3>
+
+    {% csrf_token %}
+    {% bootstrap_form form_user %}
+    {% bootstrap_form form_profile %}
+
+
+    <button class="btn btn-success" type="button" name="button">  <input class='btn bnt-danger' type="submit" name="" value="update"></button>
+
+    <p></p>
+  </form>
+
+</div>
+</div>
+
+{% endblock %}
